@@ -59,7 +59,30 @@ class HelloWorldTileService : SuspendingTileService() {
             .build()
     }
 
+    // This method is defining the layout for the tile
     private fun tileLayout(): LayoutElementBuilders.LayoutElement {
-        TODO()
+        /*
+        Its getting a string from the resource. 'R' is a class the Android itself manages and its
+        function is to serve as reference for all the resources for the app.
+        The file where the string is located is in res/values/string.xml
+         */
+        val text = getString(R.string.hello_tile_body)
+        /*
+        Will return a Box Layout and is setting several properties for this box like alignment and size
+         */
+        return LayoutElementBuilders.Box.Builder()
+            .setVerticalAlignment(LayoutElementBuilders.VERTICAL_ALIGN_CENTER)
+            .setWidth(DimensionBuilders.expand())
+            .setHeight(DimensionBuilders.expand())
+            /*
+            What is the content of the Box, in this case will only be a Text element and using the
+            resource saved in the variable.
+             */
+            .addContent(
+                LayoutElementBuilders.Text.Builder()
+                    .setText(text)
+                    .build()
+            )
+            .build()
     }
 }

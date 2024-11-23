@@ -17,6 +17,8 @@ package com.example.wear.tiles.messaging.tile
 
 import androidx.lifecycle.lifecycleScope
 import androidx.wear.protolayout.ResourceBuilders
+import androidx.wear.protolayout.ResourceBuilders.Resources
+import androidx.wear.tiles.RequestBuilders
 import androidx.wear.tiles.RequestBuilders.ResourcesRequest
 import androidx.wear.tiles.RequestBuilders.TileRequest
 import androidx.wear.tiles.TileBuilders.Tile
@@ -30,7 +32,11 @@ import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-
+/*
+The entry point of a tile for wear os is a tile service. This is defined by implementing methods from
+a TileService, or for a compose app 'SuspendingTileService' (I think). A class that extends this class
+'SuspendingTileService' has to specify two other methods, 'resourceRequest' and 'tileRequest'.
+ */
 @OptIn(ExperimentalHorologistApi::class)
 class MessagingTileService : SuspendingTileService() {
 

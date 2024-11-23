@@ -29,6 +29,19 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
+        <!--
+        For a tile to be registered, we need to add a <service> tag on the manifest.
+        A service declares a background service in Android
+        -->
+
+        <!--
+        name -> Full name of the class that implements the tile. This class must extend SuspendingTileService\
+        description -> This show a quick description when configuring the tile
+        exported -> boolean that indicates if the service is accessible to other applications. Have to be true for the system to bind to the tile service
+        icon -> The service icon. I think it must be a resource that is drawable? No sure what i means yet
+        label -> Name of the service that will be shown to users UI
+        permission -> Says to the system that only it can bind to this service. Required for security
+        -->
         <service
             android:name="com.example.wear.tiles.messaging.tile.MessagingTileService"
             android:description="@string/tile_description"
@@ -36,7 +49,10 @@
             android:icon="@drawable/ic_message_24"
             android:label="@string/tile_label"
             android:permission="com.google.android.wearable.permission.BIND_TILE_PROVIDER">
+            <!-- Indicates what is the intent of the service -->
             <intent-filter>
+                <!-- Says that the service will handle a 'BIND_TILE_PROVIDER' action, that the
+                 wear os uses to interact with a tile-->
                 <action android:name="androidx.wear.tiles.action.BIND_TILE_PROVIDER" />
             </intent-filter>
 
